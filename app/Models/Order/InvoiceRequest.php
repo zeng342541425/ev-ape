@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models\Order;
+
+use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
+class InvoiceRequest extends BaseModel
+{
+
+    /**
+     * 表名
+     *
+     * @var string
+     */
+    protected $table = 'invoice_requests';
+
+    protected $guarded = [];
+
+    protected $hidden = ['updated_at'];
+
+    public function __construct(array $attributes = [])
+    {
+
+        parent::__construct($attributes);
+    }
+
+}

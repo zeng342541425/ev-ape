@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "288c4046-2fd3-4d23-b419-6dff1f9b4348",
+		"name": "APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25937167"
+	},
+	"item": [
+		{
+			"name": "登入",
+			"item": [
+				{
+					"name": "登入",
+					"item": [
+						{
+							"name": "登入",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"登入\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.code).to.eql(200);\r",
+											"\r",
+											"    pm.environment.set(\"user_token\", jsonData.data.token_info.token);\r",
+											"    pm.environment.set(\"user_info\", JSON.stringify(jsonData.data.user_info));\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\": \"{{user_name}}\",\r\n    \"password\": \"{{user_password}}\"\r\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/login",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "登入",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"phone\": \"{{user_name}}\",\r\n    \"password\": \"{{user_password}}\"\r\n} ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_uri}}/login",
+											"host": [
+												"{{base_uri}}"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.16.1"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.2"
+										},
+										{
+											"key": "Request-Uid",
+											"value": "6d06ca9eb84621e86fa596b9e9c246b6"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 17 Apr 2023 02:10:11 GMT"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "55"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"登入成功\",\n    \"data\": {\n        \"user_info\": {\n            \"id\": 1,\n            \"name\": \"hlmd\",\n            \"phone\": \"098888888\",\n            \"email\": \"1913555371@qq.com\",\n            \"status\": 1\n        },\n        \"token_info\": {\n            \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmVpYmkubGFyYXZlbC9hcGkvbG9naW4iLCJpYXQiOjE2ODE2OTc0MTEsImV4cCI6MTY4MTcwNDYxMSwibmJmIjoxNjgxNjk3NDExLCJqdGkiOiJnbUxCQnFvY3NGbUx0MDQ4Iiwic3ViIjoiMSIsInBydiI6IjUwODRmZGU2NTg3ODIzMzgxMzJlMmUyNWYyMjJhN2U4YzVhNTBkMDEiLCJyb2xlIjoidXNlciJ9.1WsPGKf-K4TIMxh5TWs_sd2YQm6n8WKyzOwyFrd_0Qg\",\n            \"token_type\": \"bearer\",\n            \"expires_in\": 7200\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "登出",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_uri}}/logout",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "登出",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{base_uri}}/logout",
+											"host": [
+												"{{base_uri}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.16.1"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.2"
+										},
+										{
+											"key": "Request-Uid",
+											"value": "4dadec74be14bd0af5b1c209a64fd1fe"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 17 Apr 2023 02:09:50 GMT"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"請求成功\",\n    \"data\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "帳號信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_uri}}/me",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "帳號信息",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{base_uri}}/me",
+											"host": [
+												"{{base_uri}}"
+											],
+											"path": [
+												"me"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.16.1"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.2"
+										},
+										{
+											"key": "Request-Uid",
+											"value": "4562d556d96c423812ddbd0f5e825147"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 17 Apr 2023 02:09:37 GMT"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"請求成功\",\n    \"data\": {\n        \"user_info\": {\n            \"id\": 1,\n            \"name\": \"hlmd\",\n            \"phone\": \"098888888\",\n            \"email\": \"1913555371@qq.com\",\n            \"email_verified_at\": null,\n            \"status\": 1,\n            \"created_at\": \"2023-04-12 10:22:21\",\n            \"updated_at\": \"2023-04-14 15:41:33\"\n        }\n    }\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "註冊",
+					"item": [
+						{
+							"name": "註冊",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"黃連木笛\",\r\n    \"phone\": \"0988888888\",\r\n    \"email\": \"1913555371@qq.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/register",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{user_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.addHeader('lang: ' + pm.variables.get(\"locale\"));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"let auth = pm.response.headers.find((item)=>{",
+					"    return item.key === 'Authorization'",
+					"});",
+					"if(auth){",
+					"    let token = auth.value.replace('Bearer ', '');",
+					"    console.log('續簽 Token: ', token);",
+					"    pm.environment.set(\"user_token\", token);",
+					"}",
+					"",
+					"try {",
+					"  let jsonData = pm.response.json();",
+					"  let code_arr = [202];",
+					"  if (code_arr.indexOf(jsonData.code) > -1) {",
+					"      login();",
+					"  }",
+					"",
+					"} catch (err) {",
+					"  // catchCode - 捕获错误的代码块",
+					"  console.log(err);",
+					"}",
+					"",
+					"/**",
+					" * 登入",
+					" */",
+					"function login() {",
+					"  let domain = pm.variables.get(\"domain\");",
+					"  pm.sendRequest({",
+					"    url: `${domain}/api/login`,",
+					"    method: 'POST',",
+					"    header: {",
+					"      'Content-Type': 'application/json',",
+					"      'lang': pm.variables.get(\"locale\")",
+					"    },",
+					"    body: {",
+					"      mode: 'raw',",
+					"      raw: JSON.stringify({",
+					"        \"phone\": pm.variables.get(\"user_name\"),",
+					"        \"password\": pm.variables.get(\"user_password\")",
+					"      })",
+					"    }",
+					"  }, function (err, response) {",
+					"    let body = response.json();",
+					"    if (body.code == 200) {",
+					"      pm.environment.set(\"user_token\", body.data.token_info.token);",
+					"    }",
+					"    console.log(body)",
+					"  });",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "http://feibi.laravel",
+			"type": "string"
+		},
+		{
+			"key": "base_uri",
+			"value": "{{domain}}/api",
+			"type": "string"
+		},
+		{
+			"key": "user_name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "locale",
+			"value": "zh-TW",
+			"type": "string"
+		},
+		{
+			"key": "user_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_info",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
